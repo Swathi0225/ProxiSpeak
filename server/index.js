@@ -90,7 +90,6 @@ io.on("connection", socket => {
     emitWorld();
   });
 
-  // WebRTC signaling: server relays offer/answer/ICE only between peers.
   for (const event of ["webrtc:offer", "webrtc:answer", "webrtc:ice"]) {
     socket.on(event, ({ to, data }) => {
       if (!to || !users.has(to)) return;
